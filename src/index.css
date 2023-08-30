@@ -1,4 +1,6 @@
 body {
+  --bg-color-login-green: #00ce0ad5;
+  --color-login: #ffffff;
   --bg-color-pink: #eb37bc;
   --color-pink-border: #b4298f;
 
@@ -19,11 +21,11 @@ body {
 
   text-align: center;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     font-size: large;
   }
-  @media screen and (max-width: 1280px) {
-    font-size: small;
+  @media screen and (min-width: 1440px) {
+    font-size: larger;
   }
 }
 
