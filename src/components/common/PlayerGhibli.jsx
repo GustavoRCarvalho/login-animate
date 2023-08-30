@@ -81,4 +81,7 @@ const ButtonPlayer = styled.div`
   align-items: center;
 
   border: none;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `
