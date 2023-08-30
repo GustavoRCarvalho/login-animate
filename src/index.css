@@ -1,10 +1,13 @@
 body {
   --bg-color-login-green: #00ce0ad5;
+  --color-login-green: #10ff1cd5;
+  --color-login-yellow: #ffd310;
+  --color-login-error: #f12400;
   --color-login: #ffffff;
   --bg-color-pink: #eb37bc;
   --color-pink-border: #b4298f;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial;
   line-height: 1.5;
   font-weight: 400;
 

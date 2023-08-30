@@ -6,6 +6,7 @@ export const InputLogin = ({
   setValue = () => {},
   label,
   type = "text",
+  error = true,
 }) => {
   const [onFocus, setOnFocus] = useState(false)
 
@@ -14,6 +15,7 @@ export const InputLogin = ({
       tabIndex={0}
       onFocus={() => setOnFocus(true)}
       onBlur={() => setOnFocus(false)}
+      $error={error}
     >
       <Inputlabel $onFocus={value !== "" || onFocus}>{label}</Inputlabel>
       <Input
@@ -33,9 +35,13 @@ const InputContainer = styled.div`
   justify-content: start;
 
   width: 100%;
+  margin-block: 1em;
 
-  color: var(--color-login);
-  border-bottom: 1px solid var(--color-login);
+  color: ${(props) =>
+    props.$error ? "var(--color-login-error)" : "var(--color-login)"};
+  border-bottom: 1px solid
+    ${(props) =>
+      props.$error ? "var(--color-login-error)" : "var(--color-login)"};
 `
 
 const Inputlabel = styled.label`

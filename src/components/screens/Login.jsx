@@ -4,14 +4,45 @@ import { InputLogin } from "../Login/InputLogin"
 import { useState } from "react"
 import audio from "../../assets/audios/loginGhibliAudio.mp3"
 import { PlayerGhibli } from "../common/PlayerGhibli"
+import { ForgotPassword } from "../Login/ForgotPassword"
+import { Logo } from "../Login/Logo"
+
+const initialState = {
+  User: { value: "", error: "" },
+  Password: { value: "", error: "" },
+}
 
 export const Login = () => {
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState(initialState)
 
   const handleInput = ({ text, type }) => {
     setForm((state) => {
-      return { ...state, [type]: text }
+      return { ...state, [type]: { value: text, error: "" } }
     })
+  }
+
+  function handleSubmit() {
+    const list = Object.keys(form)
+    let haveError = false
+
+    list.forEach((field) => {
+      if (form[field]?.value === "") {
+        setForm((state) => {
+          return {
+            ...state,
+            [field]: { value: state[field].value, error: "Field Empty" },
+          }
+        })
+        haveError = true
+      }
+    })
+    if (!haveError) {
+      list.forEach((field) => {
+        setForm((state) => {
+          return { ...state, [field]: { value: "", error: "" } }
+        })
+      })
+    }
   }
 
   return (
@@ -19,21 +50,24 @@ export const Login = () => {
       <PlayerGhibli audio={audio} />
       <LoginContainer>
         <LoginWrapper>
-          LOGIN
+          <Logo src="/src/assets/ghibli/ghibliLogo.svg" alt="logo" />
           <InputWrapper>
             <InputLogin
               label={"User"}
-              value={form.User}
+              value={form.User?.value}
+              error={form.User?.error !== ""}
               setValue={handleInput}
             />
             <InputLogin
               label={"Password"}
-              value={form.Password}
+              value={form.Password?.value}
+              error={form.Password?.error !== ""}
               setValue={handleInput}
               type="password"
             />
+            <ForgotPassword />
           </InputWrapper>
-          <ButtonConfirm />
+          <ButtonConfirm onClick={handleSubmit} />
         </LoginWrapper>
       </LoginContainer>
     </LoginBackground>
@@ -42,10 +76,12 @@ export const Login = () => {
 
 const LoginBackground = styled.div`
   position: relative;
-  background: url("/src/assets/77a266bb54fc65179ec0672d97268c3a.gif");
+  background: url("/src/assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
+  font-family: Arial;
 
   width: 100vw;
   height: 100vh;
@@ -82,8 +118,8 @@ const LoginWrapper = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: end;
   justify-content: space-between;
 
   width: 80%;
-  height: 15%;
 `
