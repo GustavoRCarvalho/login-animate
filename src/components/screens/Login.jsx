@@ -49,7 +49,10 @@ export const Login = () => {
   return (
     <LoginBackground>
       <LoginContentLimit>
-        <PlayerGhibli audio={audio} />
+        <PlayerGhibli
+          audio={audio}
+          title="Spirited Away: Always With Me cover by Deneb"
+        />
         <LoginContainer>
           <LoginWrapper>
             <Logo src="/src/assets/ghibli/ghibliLogo.svg" alt="logo" />
