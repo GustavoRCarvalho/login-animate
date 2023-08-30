@@ -7,6 +7,7 @@ import { PlayerGhibli } from "../common/PlayerGhibli"
 import { ForgotPassword } from "../Login/ForgotPassword"
 import { Logo } from "../Login/Logo"
 import { ContentLimit } from "../common/ContentLimit"
+import logoImg from "../../assets/ghibli/ghibliLogo.svg"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -55,7 +56,7 @@ export const Login = () => {
         />
         <LoginContainer>
           <LoginWrapper>
-            <Logo src="/src/assets/ghibli/ghibliLogo.svg" alt="logo" />
+            <Logo src={logoImg} alt="logo" />
             <InputWrapper>
               <InputLogin
                 label={"User"}
