@@ -8,6 +8,7 @@ import { ForgotPassword } from "../Login/ForgotPassword"
 import { Logo } from "../Login/Logo"
 import { ContentLimit } from "../common/ContentLimit"
 import logoImg from "../../assets/ghibli/ghibliLogo.svg"
+import backgroundImg from "../../assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -49,6 +50,7 @@ export const Login = () => {
 
   return (
     <LoginBackground>
+      <LoginBackgroundImage src={backgroundImg} />
       <LoginContentLimit>
         <PlayerGhibli
           audio={audio}
@@ -91,11 +93,20 @@ const LoginContentLimit = styled(ContentLimit)`
   }
 `
 
+const LoginBackgroundImage = styled.img`
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+`
+
 const LoginBackground = styled.div`
-  background: url("/src/assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  position: relative;
 
   font-family: Arial;
 
@@ -104,6 +115,8 @@ const LoginBackground = styled.div`
 
   display: flex;
   justify-content: center;
+
+  overflow: hidden;
 `
 
 const LoginContainer = styled.div`
