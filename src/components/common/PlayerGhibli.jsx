@@ -25,12 +25,12 @@ export const PlayerGhibli = ({ audio, title }) => {
   console.log(playing)
 
   return (
-    <ButtonPlayer onClick={toggle}>
+    <ButtonPlayer>
       <PlayTitleContainer>
         <PlayTitle $show={showTitle}>{title}</PlayTitle>
       </PlayTitleContainer>
 
-      {playing ? <PauseIcon /> : <PlayIcon />}
+      {playing ? <PauseIcon onClick={toggle} /> : <PlayIcon onClick={toggle} />}
     </ButtonPlayer>
   )
 }
@@ -38,11 +38,13 @@ export const PlayerGhibli = ({ audio, title }) => {
 const PauseIcon = styled(AiOutlinePause)`
   width: 3em;
   height: 3em;
+  cursor: pointer;
 `
 
 const PlayIcon = styled(BsPlay)`
   width: 3em;
   height: 3em;
+  cursor: pointer;
 `
 
 const PlayTitleContainer = styled.div`
@@ -65,7 +67,7 @@ const PlayTitle = styled.span`
   transition: transform 3000ms;
 `
 
-const ButtonPlayer = styled.button`
+const ButtonPlayer = styled.div`
   position: absolute;
   background-color: transparent;
 
