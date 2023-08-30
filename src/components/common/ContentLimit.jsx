@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ContentContainer = styled.section`
+export const ContentLimit = styled.section`
   position: relative;
 
   max-width: 1440px;

@@ -6,6 +6,7 @@ import audio from "../../assets/audios/loginGhibliAudio.mp3"
 import { PlayerGhibli } from "../common/PlayerGhibli"
 import { ForgotPassword } from "../Login/ForgotPassword"
 import { Logo } from "../Login/Logo"
+import { ContentLimit } from "../common/ContentLimit"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -47,35 +48,46 @@ export const Login = () => {
 
   return (
     <LoginBackground>
-      <PlayerGhibli audio={audio} />
-      <LoginContainer>
-        <LoginWrapper>
-          <Logo src="/src/assets/ghibli/ghibliLogo.svg" alt="logo" />
-          <InputWrapper>
-            <InputLogin
-              label={"User"}
-              value={form.User?.value}
-              error={form.User?.error !== ""}
-              setValue={handleInput}
-            />
-            <InputLogin
-              label={"Password"}
-              value={form.Password?.value}
-              error={form.Password?.error !== ""}
-              setValue={handleInput}
-              type="password"
-            />
-            <ForgotPassword />
-          </InputWrapper>
-          <ButtonConfirm onClick={handleSubmit} />
-        </LoginWrapper>
-      </LoginContainer>
+      <LoginContentLimit>
+        <PlayerGhibli audio={audio} />
+        <LoginContainer>
+          <LoginWrapper>
+            <Logo src="/src/assets/ghibli/ghibliLogo.svg" alt="logo" />
+            <InputWrapper>
+              <InputLogin
+                label={"User"}
+                value={form.User?.value}
+                error={form.User?.error !== ""}
+                setValue={handleInput}
+              />
+              <InputLogin
+                label={"Password"}
+                value={form.Password?.value}
+                error={form.Password?.error !== ""}
+                setValue={handleInput}
+                type="password"
+              />
+              <ForgotPassword />
+            </InputWrapper>
+            <ButtonConfirm onClick={handleSubmit} />
+          </LoginWrapper>
+        </LoginContainer>
+      </LoginContentLimit>
     </LoginBackground>
   )
 }
 
+const LoginContentLimit = styled(ContentLimit)`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+`
+
 const LoginBackground = styled.div`
-  position: relative;
   background: url("/src/assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif");
   background-size: cover;
   background-position: center center;
@@ -87,12 +99,7 @@ const LoginBackground = styled.div`
   height: 100vh;
 
   display: flex;
-  justify-content: end;
-  align-items: center;
-
-  @media screen and (max-width: 768px) {
-    justify-content: center;
-  }
+  justify-content: center;
 `
 
 const LoginContainer = styled.div`
@@ -103,6 +110,10 @@ const LoginContainer = styled.div`
   margin-inline: 5%;
 
   border-radius: 1em;
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
 `
 
 const LoginWrapper = styled.div`
