@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { NoStyleLinkRouter } from "../Common1/NoStyleLinkRouter"
+import { NoStyleLinkRouter } from "../Common/NoStyleLinkRouter"
 import { ListMenuGhibli, MenuItemGhibli } from "./MenuGhibli"
 import { AiOutlineMenu } from "react-icons/ai"
 import { styled } from "styled-components"
