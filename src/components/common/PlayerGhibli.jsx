@@ -22,8 +22,6 @@ export const PlayerGhibli = ({ audio, title }) => {
     }, 15000)
   }, [])
 
-  console.log(playing)
-
   return (
     <ButtonPlayer>
       <PlayTitleContainer>
@@ -68,12 +66,12 @@ const PlayTitle = styled.span`
 `
 
 const ButtonPlayer = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: transparent;
 
   width: 40%;
 
-  top: 1rem;
+  top: 4rem;
   right: 1em;
 
   display: flex;
@@ -81,6 +79,9 @@ const ButtonPlayer = styled.div`
   align-items: center;
 
   border: none;
+
+  z-index: 1;
+
   @media screen and (max-width: 768px) {
     width: 90%;
   }

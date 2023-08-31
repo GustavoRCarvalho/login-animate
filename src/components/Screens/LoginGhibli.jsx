@@ -3,10 +3,10 @@ import { ButtonConfirm } from "../Login/ButtonConfirm"
 import { InputLogin } from "../Login/InputLogin"
 import { useState } from "react"
 import audio from "../../assets/audios/loginGhibliAudio.mp3"
-import { PlayerGhibli } from "../common/PlayerGhibli"
+import { PlayerGhibli } from "../Common/PlayerGhibli"
 import { ForgotPassword } from "../Login/ForgotPassword"
 import { Logo } from "../Login/Logo"
-import { ContentLimit } from "../common/ContentLimit"
+import { ContentLimit } from "../Common/ContentLimit"
 import logoImg from "../../assets/ghibli/ghibliLogo.svg"
 import backgroundImg from "../../assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif"
 
@@ -15,7 +15,7 @@ const initialState = {
   Password: { value: "", error: "" },
 }
 
-export const Login = () => {
+export const LoginGhibli = () => {
   const [form, setForm] = useState(initialState)
 
   const handleInput = ({ text, type }) => {
@@ -49,7 +49,7 @@ export const Login = () => {
   }
 
   return (
-    <LoginBackground>
+    <>
       <LoginBackgroundImage src={backgroundImg} />
       <LoginContentLimit>
         <PlayerGhibli
@@ -79,16 +79,19 @@ export const Login = () => {
           </LoginWrapper>
         </LoginContainer>
       </LoginContentLimit>
-    </LoginBackground>
+    </>
   )
 }
 
 const LoginContentLimit = styled(ContentLimit)`
+  height: 80vh;
+
   display: flex;
   justify-content: end;
   align-items: center;
 
   @media screen and (max-width: 768px) {
+    height: 100vh;
     justify-content: center;
   }
 `
@@ -103,20 +106,6 @@ const LoginBackgroundImage = styled.img`
   width: 100%;
 
   object-fit: cover;
-`
-
-const LoginBackground = styled.div`
-  position: relative;
-
-  font-family: Arial;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-
-  overflow: hidden;
 `
 
 const LoginContainer = styled.div`

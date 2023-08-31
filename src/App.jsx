@@ -1,9 +1,12 @@
-import { Login } from "./components/screens/Login"
+import { BrowserRouter } from "react-router-dom"
+import { Content } from "./router/Content"
+import { Header } from "./components/screens/Header"
 
 export const App = () => {
   return (
-    <>
-      <Login />
-    </>
+    <BrowserRouter>
+      <Header />
+      <Content />
+    </BrowserRouter>
   )
 }
