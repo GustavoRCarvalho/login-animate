@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import styled from "styled-components"
-import { LoginGhibli } from "../components/Screens/LoginGhibli"
+import { LoginGhibli } from "../components/Screens1/LoginGhibli"
 
 export const Content = () => {
   return (
