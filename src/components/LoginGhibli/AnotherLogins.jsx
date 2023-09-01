@@ -40,6 +40,8 @@ const LineSpan = styled.span`
 
 const LineLabelSpan = styled.span`
   margin-inline: 1em;
+
+  user-select: none;
 `
 
 const LoginAnotherButton = styled.button`
