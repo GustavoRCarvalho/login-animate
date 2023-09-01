@@ -9,6 +9,7 @@ import { Logo } from "../LoginGhibli/Logo"
 import { ContentLimit } from "../Common/ContentLimit"
 import logoImg from "../../assets/ghibli/ghibliLogo.svg"
 import backgroundImg from "../../assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif"
+import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -57,26 +58,25 @@ export const LoginGhibli = () => {
           title="Spirited Away: Always With Me cover by Deneb"
         />
         <LoginContainer>
-          <LoginWrapper>
-            <Logo src={logoImg} alt="logo" />
-            <InputWrapper>
-              <InputLogin
-                label={"User"}
-                value={form.User?.value}
-                error={form.User?.error !== ""}
-                setValue={handleInput}
-              />
-              <InputLogin
-                label={"Password"}
-                value={form.Password?.value}
-                error={form.Password?.error !== ""}
-                setValue={handleInput}
-                type="password"
-              />
-              <ForgotPassword />
-            </InputWrapper>
-            <ButtonConfirm onClick={handleSubmit} />
-          </LoginWrapper>
+          <Logo src={logoImg} alt="logo" />
+          <InputWrapper>
+            <InputLogin
+              label={"User"}
+              value={form.User?.value}
+              error={form.User?.error !== ""}
+              setValue={handleInput}
+            />
+            <InputLogin
+              label={"Password"}
+              value={form.Password?.value}
+              error={form.Password?.error !== ""}
+              setValue={handleInput}
+              type="password"
+            />
+            <ForgotPassword />
+          </InputWrapper>
+          <ButtonConfirm onClick={handleSubmit} />
+          <AnotherLogins />
         </LoginContainer>
       </LoginContentLimit>
     </>
@@ -84,14 +84,13 @@ export const LoginGhibli = () => {
 }
 
 const LoginContentLimit = styled(ContentLimit)`
-  height: 80vh;
+  height: 100vh;
 
   display: flex;
   justify-content: end;
   align-items: center;
 
   @media screen and (max-width: 768px) {
-    height: 100vh;
     justify-content: center;
   }
 `
@@ -110,26 +109,18 @@ const LoginBackgroundImage = styled.img`
 
 const LoginContainer = styled.div`
   backdrop-filter: blur(4px);
-
-  width: 30em;
-  height: 35em;
-  margin-inline: 5%;
-
   border-radius: 1em;
 
-  @media screen and (max-width: 768px) {
-    margin: 0;
-  }
-`
-
-const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 
-  width: 100%;
-  height: 100%;
+  width: 30em;
+  min-width: min-content;
+  min-height: min-content;
+
+  padding-block: 1em;
 `
 
 const InputWrapper = styled.div`
