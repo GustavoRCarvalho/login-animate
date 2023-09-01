@@ -42,10 +42,12 @@ const ContainerLimiteMenu = styled.nav`
 `
 
 const ContainerHeader = styled.header`
-  position: sticky;
+  position: fixed;
 
   display: flex;
   justify-content: center;
+
+  width: 100%;
 
   top: 0;
 
