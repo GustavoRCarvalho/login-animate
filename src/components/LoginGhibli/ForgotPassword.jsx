@@ -10,6 +10,6 @@ const Span = styled.span`
   cursor: pointer;
 
   &:hover {
-    color: var(--color-login-yellow);
+    text-decoration: underline;
   }
 `
