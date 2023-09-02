@@ -66,7 +66,7 @@ const PlayTitle = styled.span`
 `
 
 const ButtonPlayer = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: transparent;
 
   width: 40%;
