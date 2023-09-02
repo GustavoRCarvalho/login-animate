@@ -7,7 +7,6 @@ export const Header = () => {
 
   function handleClickOutside(e) {
     if (e.target.id === "nav") {
-      console.log(e.target.id)
       setIsOpen(false)
     }
   }
