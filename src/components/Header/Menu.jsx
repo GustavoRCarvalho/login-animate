@@ -10,8 +10,8 @@ const MenuItems = [
     title: "Login Ghibli",
   },
   {
-    path: "login-3d",
-    title: "Login 3D",
+    path: "login-ordem-paranormal",
+    title: "Login Ordem Paranormal",
   },
   {
     path: "login-disney",

@@ -1,10 +1,11 @@
 body {
   --bg-color-login-green: #00ce0a9a;
   --bg-color-login-google-gradient: #ffffff41;
-  --bg-color-login-google-red: #ff3535;
+  --bg-color-login-google-red: #ff1313;
   --bg-color-login-google-yellow: #ffee00;
   --bg-color-login-google-green: #00d100;
   --bg-color-login-google-blue: #0084ff;
+  --bg-default-color: #242424;
   --color-login-green: #10ff1cd5;
   --color-login-yellow: #ffd310;
   --color-login-error: #f12400;
