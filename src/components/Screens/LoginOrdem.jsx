@@ -8,6 +8,7 @@ import { ButtonConfirmOrdem } from "../LoginOrdem/ButtonConfirmOrdem"
 import { handleSubmit } from "../Common/LoginshandleSubmit"
 import { InputLoginOrdem } from "../LoginOrdem/InputLoginOrdem"
 import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
+import { ForgotPassword } from "../LoginGhibli/ForgotPassword"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -59,6 +60,7 @@ export const LoginOrdem = () => {
               setValue={handleInput}
               type="password"
             />
+            <ForgotPassword />
           </InputWrapper>
           <ButtonConfirmOrdem
             onClick={() => handleSubmit({ form: form, setForm: setForm })}
