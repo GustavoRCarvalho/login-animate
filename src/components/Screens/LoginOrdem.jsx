@@ -4,9 +4,10 @@ import { ContentLimit } from "../Common/ContentLimit"
 import { Logo } from "../LoginGhibli/Logo"
 import ordemLogo from "../../assets/ordem/ordemLogo.png"
 import { useEffect, useState } from "react"
-import { InputLogin } from "../LoginGhibli/InputLogin"
 import { ButtonConfirmOrdem } from "../LoginOrdem/ButtonConfirmOrdem"
 import { handleSubmit } from "../Common/LoginshandleSubmit"
+import { InputLoginOrdem } from "../LoginOrdem/InputLoginOrdem"
+import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
 
 const initialState = {
   User: { value: "", error: "" },
@@ -17,6 +18,7 @@ export const LoginOrdem = () => {
   const [form, setForm] = useState(initialState)
   const [porcent, setPorcent] = useState(0)
   const [isHover, setIsHover] = useState(false)
+  const [isReady, setIsReady] = useState(false)
 
   const handleInput = ({ text, type }) => {
     setForm((state) => {
@@ -26,11 +28,14 @@ export const LoginOrdem = () => {
 
   useEffect(() => {
     if (form.User.value !== "" && form.Password.value !== "") {
-      setPorcent(100)
+      setPorcent(80)
+      setIsReady(true)
     } else if (form.User.value !== "" || form.Password.value !== "") {
-      setPorcent(50)
+      setPorcent(40)
+      setIsReady(false)
     } else {
       setPorcent(0)
+      setIsReady(false)
     }
   }, [form])
 
@@ -41,13 +46,13 @@ export const LoginOrdem = () => {
         <LoginContainer>
           <Logo src={ordemLogo} />
           <InputWrapper>
-            <InputLogin
+            <InputLoginOrdem
               label={"User"}
               value={form.User?.value}
               error={form.User?.error !== ""}
               setValue={handleInput}
             />
-            <InputLogin
+            <InputLoginOrdem
               label={"Password"}
               value={form.Password?.value}
               error={form.Password?.error !== ""}
@@ -58,7 +63,9 @@ export const LoginOrdem = () => {
           <ButtonConfirmOrdem
             onClick={() => handleSubmit({ form: form, setForm: setForm })}
             setIsHover={setIsHover}
+            isReady={isReady}
           />
+          <AnotherLogins />
         </LoginContainer>
       </LoginContentLimit>
     </>
@@ -80,6 +87,8 @@ const LoginContentLimit = styled(ContentLimit)`
 const LoginContainer = styled.div`
   backdrop-filter: blur(4px);
   border-radius: 1em;
+
+  font-family: "Caveat", cursive;
 
   display: flex;
   flex-direction: column;

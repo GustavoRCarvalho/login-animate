@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
-export const ButtonConfirmOrdem = ({ onClick, setIsHover }) => {
+export const ButtonConfirmOrdem = ({ onClick, setIsHover, isReady }) => {
   return (
     <Button
       onClick={onClick}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      disabled={!isReady}
     >
       Sign In
     </Button>
@@ -15,23 +16,25 @@ export const ButtonConfirmOrdem = ({ onClick, setIsHover }) => {
 const Button = styled.button`
   background-color: #0000;
 
-  font-size: 1.1em;
+  font-family: "Caveat", cursive;
+
+  font-size: 1.5em;
 
   border: none;
-  border-radius: 0.5em;
-  padding-block: 0.5em;
-  margin-block: 1em;
+  border-radius: 0.2em;
+  padding-block: 0.1em;
+  margin-block: 0.5em;
 
   width: 80%;
 
-  cursor: pointer;
+  cursor: ${(props) => (!props.disabled ? "pointer" : "not-allowed")};
 
   &:hover {
-    background-color: var(--bg-color-login-google-red);
-    box-shadow: 0em 0em 0.65em 0.35em var(--bg-color-login-google-red),
-      2.5em 0.5em 5em 0.4em var(--bg-color-login-google-red),
-      -2.5em -0.5em 5em 0.4em var(--bg-color-login-google-red),
-      inset 0em 0em 5em 0.4em var(--bg-color-login-google-red);
+    background-color: ${(props) =>
+      !props.disabled && "var(--bg-color-login-ordem-red)"};
+    box-shadow: ${(props) =>
+      !props.disabled &&
+      "0em 0em 0.35em 0.15em var(--bg-color-login-ordem-red),1.5em 0.3em 3em 0.2em var(--bg-color-login-ordem-red),-1.5em -0.3em 3em 0.2em var(--bg-color-login-ordem-red),inset 0em 0em 3em 0.2em var(--bg-color-login-ordem-red)"};
   }
 
   transition: background-color 150ms, box-shadow 125ms;

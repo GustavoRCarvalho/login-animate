@@ -1,11 +1,17 @@
 import { styled } from "styled-components"
 import ordemImage from "../../assets/ordem/static-assets-upload12428278481875804805.webp"
+import paredeImage from "../../assets/ordem/parede.jpg"
 
 export const BackgroundImage = ({ porcent, ready }) => {
   return (
     <BackgroundContainer>
-      <Background $ready={ready} src={ordemImage} />
-      <BackgroundMask $show={-(porcent - 100)} />
+      <BackgroundWall src={paredeImage} title="wall image" />
+      <Background
+        $show={porcent}
+        $ready={ready}
+        src={ordemImage}
+        title="symbol image"
+      />
     </BackgroundContainer>
   )
 }
@@ -16,28 +22,37 @@ const BackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
 `
 
 const Background = styled.img`
+  position: absolute;
   color: #f00d0d;
 
   height: 100%;
 
   object-fit: cover;
+  user-select: none;
 
   ${(props) => props.$ready && "filter: drop-shadow(0 0 30px)"};
-  transition: filter 500ms;
+  opacity: ${(props) => props.$show / 100};
+  transition: filter 500ms, opacity 2000ms;
 `
 
-const BackgroundMask = styled.div`
+const BackgroundWall = styled.img`
   position: absolute;
-  background-color: ${(props) => `rgba(36, 36, 36, ${props.$show / 100})`};
+
+  top: 0;
+  left: 0;
 
   height: 100%;
   width: 100%;
 
   object-fit: cover;
-  transition: background-color 2000ms;
+  user-select: none;
+
+  filter: grayscale(1);
 `
