@@ -1,15 +1,17 @@
 body {
   --bg-color-login-green: #00ce0a9a;
   --bg-color-login-google-gradient: #ffffff41;
+  --bg-color-login-google-gradient-light: #00000041;
   --bg-color-login-ordem-red: #ff1313a6;
   --bg-color-login-google-yellow: #ffee00;
   --bg-color-login-google-green: #00d100;
-  --bg-color-login-google-blue: #0084ff;
+  --bg-color-login-star-blue: #00ccff;
   --bg-default-color: #242424;
   --color-login-green: #10ff1cd5;
   --color-login-yellow: #ffd310;
   --color-login-error: #f12400;
   --color-login: #ffffff;
+  --color-login-light: #111111;
   --bg-color-pink: #eb37bc;
   --color-pink-border: #b4298f;
 

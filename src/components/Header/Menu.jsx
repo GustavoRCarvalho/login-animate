@@ -4,15 +4,20 @@ import { ListMenuGhibli, MenuItemGhibli } from "./MenuGhibli"
 import { AiOutlineMenu } from "react-icons/ai"
 import { styled } from "styled-components"
 import { ListMenuOrdem, MenuItemOrdem } from "./MenuOrdem"
+import { ListMenuStart, MenuItemStart } from "./MenuStart"
 
 const MenuItems = [
   {
     path: "login-ghibli",
-    title: "Login Ghibli",
+    title: "Ghibli",
   },
   {
     path: "login-ordem-paranormal",
-    title: "Login Ordem Paranormal",
+    title: "Ordem Paranormal",
+  },
+  {
+    path: "login-start-wars",
+    title: "Start Wars",
   },
 ]
 
@@ -51,6 +56,22 @@ export const Menu = ({ isOpen, setIsOpen }) => {
           <MenuIcon onClick={() => setIsOpen((state) => !state)} />
         )}
       </ListMenuGhibli>
+    )
+  } else if (path === "login-start-wars") {
+    return (
+      <ListMenuStart $isOpen={isOpen}>
+        {isOpen ? (
+          MenuItems.map((item) => (
+            <NoStyleLinkRouter key={item.path} to={item.path}>
+              <MenuItemStart $isSelected={path === item.path} $isOpen={isOpen}>
+                {item.title}
+              </MenuItemStart>
+            </NoStyleLinkRouter>
+          ))
+        ) : (
+          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
+        )}
+      </ListMenuStart>
     )
   }
 }

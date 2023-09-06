@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ButtonConfirm = ({ onClick }) => {
+export const ButtonSignIn = ({ onClick }) => {
   return (
     <Button type="submit" onClick={onClick}>
       Sign In
@@ -24,11 +24,11 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--bg-color-login-green);
-    box-shadow: 0em 0em 0.65em 0.35em var(--bg-color-login-green),
-      2.5em 0.5em 5em 0.4em var(--bg-color-login-green),
-      -2.5em -0.5em 5em 0.4em var(--bg-color-login-green),
-      inset 0em 0em 5em 0.4em var(--bg-color-login-green);
+    background-color: var(--bg-color-login-star-blue);
+    box-shadow: 0em 0em 0.65em 0.35em var(--bg-color-login-star-blue),
+      2.5em 0.5em 5em 0.4em var(--bg-color-login-star-blue),
+      -2.5em -0.5em 5em 0.4em var(--bg-color-login-star-blue),
+      inset 0em 0em 5em 0.4em var(--bg-color-login-star-blue);
   }
 
   transition: background-color 150ms, box-shadow 125ms;
