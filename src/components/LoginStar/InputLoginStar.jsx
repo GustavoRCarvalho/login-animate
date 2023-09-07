@@ -7,11 +7,13 @@ export const InputLoginStar = ({
   placeholder,
   type = "text",
   error = true,
+  aliance,
 }) => {
   return (
-    <InputContainer tabIndex={0}>
+    <InputContainer tabIndex={0} $aliance={aliance}>
       <Inputlabel>{label}</Inputlabel>
       <Input
+        $aliance={aliance}
         placeholder={placeholder}
         value={value}
         $error={error}
@@ -31,6 +33,9 @@ const InputContainer = styled.div`
 
   width: 100%;
   margin-block: 1em;
+
+  color: ${(props) =>
+    props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};
 `
 
 const Inputlabel = styled.label`
@@ -46,12 +51,18 @@ const Input = styled.input`
 
   font-size: 1em;
 
-  color: ${(props) =>
-    props.$error ? "var(--color-login-error)" : "var(--color-login-light)"};
+  color: ${(props) => {
+    if (props.$error) return "var(--color-login-error)"
+    else if (props.$aliance) return "var(--color-login-light)"
+    else if (!props.$aliance) return "var(--color-login)"
+  }};
   border: none;
   border: 1px solid
-    ${(props) =>
-      props.$error ? "var(--color-login-error)" : "var(--color-login-light)"};
+    ${(props) => {
+      if (props.$error) return "var(--color-login-error)"
+      else if (props.$aliance) return "var(--color-login-light)"
+      else if (!props.$aliance) return "var(--color-login)"
+    }};
   border-radius: 0.5em;
 
   outline: none;

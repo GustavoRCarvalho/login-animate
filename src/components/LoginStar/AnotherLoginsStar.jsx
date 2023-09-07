@@ -2,19 +2,19 @@ import { styled } from "styled-components"
 import { FcGoogle } from "react-icons/fc"
 import { AiFillGithub } from "react-icons/ai"
 
-export const AnotherLoginsStar = () => {
+export const AnotherLoginsStar = ({ aliance }) => {
   return (
     <>
-      <LineWrapper>
-        <LineSpan />
+      <LineWrapper $aliance={aliance}>
+        <LineSpan $aliance={aliance} />
         <LineLabelSpan>OR</LineLabelSpan>
-        <LineSpan />
+        <LineSpan $aliance={aliance} />
       </LineWrapper>
       <ButtonsWrapper>
-        <LoginAnotherButton>
+        <LoginAnotherButton $aliance={aliance}>
           <GoogleIcon /> Log in with Google
         </LoginAnotherButton>
-        <LoginAnotherButton>
+        <LoginAnotherButton $aliance={aliance}>
           <GithubIcon /> Log in with GitHub
         </LoginAnotherButton>
       </ButtonsWrapper>
@@ -29,10 +29,14 @@ const LineWrapper = styled.div`
   align-items: center;
 
   margin-block: 1em;
+
+  color: ${(props) =>
+    props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};
 `
 
 const LineSpan = styled.span`
-  background-color: var(--color-login-light);
+  background-color: ${(props) =>
+    props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};
 
   flex: 1;
   height: 1px;
@@ -51,7 +55,8 @@ const LoginAnotherButton = styled.button`
   align-items: center;
 
   font-size: 1.1em;
-  color: var(--color-login-light);
+  color: ${(props) =>
+    props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};
 
   border: none;
   border-radius: 0.5em;
@@ -63,7 +68,10 @@ const LoginAnotherButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--bg-color-login-google-gradient-light);
+    background-color: ${(props) =>
+      props.$aliance
+        ? "var(--bg-color-login-google-gradient-light)"
+        : "var(--bg-color-login-google-gradient)"};
   }
 
   transition: background-color 150ms, box-shadow 150ms;
