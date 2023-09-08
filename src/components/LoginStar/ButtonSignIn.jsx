@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ButtonSignIn = ({ onClick, aliance }) => {
   return (
     <Button type="submit" onClick={onClick} $aliance={aliance}>
-      Sign In
+      {aliance ? "Sign In" : "Sign Up"}
     </Button>
   )
 }

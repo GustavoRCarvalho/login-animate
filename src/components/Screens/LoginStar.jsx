@@ -28,18 +28,32 @@ export const LoginStar = () => {
       <LoginContentLimit>
         <LoginCard $aliance={aliance}>
           <LoginContainer>
-            <button onClick={() => setAliance((state) => !state)}>
-              change
-            </button>
+            <LoginChangeWrapper>
+              <LoginChangeButton
+                $aliance={true}
+                onClick={() => setAliance(true)}
+              >
+                Login
+              </LoginChangeButton>
+              <LoginChangeLineSpan $aliance={aliance} />
+              <LoginChangeButton
+                $aliance={false}
+                onClick={() => setAliance(false)}
+              >
+                Register
+              </LoginChangeButton>
+            </LoginChangeWrapper>
             <InputWrapper>
-              <InputLoginStar
-                aliance={aliance}
-                label={"Your Name"}
-                placeholder={"First Last"}
-                value={form["Your Name"]?.value}
-                error={form["Your Name"]?.error !== ""}
-                setValue={handleInput}
-              />
+              {!aliance && (
+                <InputLoginStar
+                  aliance={aliance}
+                  label={"Your Name"}
+                  placeholder={"First Last"}
+                  value={form["Your Name"]?.value}
+                  error={form["Your Name"]?.error !== ""}
+                  setValue={handleInput}
+                />
+              )}
               <InputLoginStar
                 aliance={aliance}
                 label={"Email"}
@@ -63,7 +77,7 @@ export const LoginStar = () => {
               aliance={aliance}
               onClick={() => handleSubmit({ form: form, setForm: setForm })}
             />
-            <AnotherLoginsStar aliance={aliance} />
+            {aliance && <AnotherLoginsStar aliance={aliance} />}
           </LoginContainer>
           <ImageLogo aliance={aliance} />
         </LoginCard>
@@ -71,6 +85,36 @@ export const LoginStar = () => {
     </>
   )
 }
+
+const LoginChangeButton = styled.button`
+  background-color: ${(props) => (props.$aliance ? "#1c1c1c" : "#eee")};
+  border: none;
+  border-radius: 0.5em;
+
+  padding-block: 0.4em;
+  padding-inline: 0.8em;
+
+  color: ${(props) =>
+    props.$aliance ? "var(--color-login)" : "var(--color-login-light)"};
+
+  cursor: pointer;
+
+  transition: background-color 200ms, color 200ms;
+`
+
+const LoginChangeLineSpan = styled.div`
+  background-color: ${(props) => (props.$aliance ? "#1c1c1c" : "#eee")};
+  height: 100%;
+  width: 1px;
+`
+
+const LoginChangeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+`
 
 const LoginContentLimit = styled(ContentLimit)`
   height: 100vh;
@@ -114,7 +158,7 @@ const LoginContainer = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
 
   width: 80%;

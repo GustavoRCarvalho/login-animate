@@ -25,13 +25,12 @@ export const InputLoginStar = ({
 }
 
 const InputContainer = styled.div`
-  position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: start;
 
   width: 100%;
+
   margin-block: 1em;
 
   color: ${(props) =>
@@ -45,7 +44,7 @@ const Inputlabel = styled.label`
 const Input = styled.input`
   background-color: #0000;
 
-  width: 100%;
+  width: calc(100% - (1px + 0.7em * 2));
 
   padding: 0.7em;
 
