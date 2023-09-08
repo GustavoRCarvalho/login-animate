@@ -47,6 +47,7 @@ const Input = styled.input`
   width: calc(100% - (1px + 0.7em * 2));
 
   padding: 0.7em;
+  font-family: "Quicksand", sans-serif;
 
   font-size: 1em;
 

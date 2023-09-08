@@ -54,6 +54,7 @@ const LoginAnotherButton = styled.button`
   justify-content: center;
   align-items: center;
 
+  font-family: "Quicksand", sans-serif;
   font-size: 1.1em;
   color: ${(props) =>
     props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};

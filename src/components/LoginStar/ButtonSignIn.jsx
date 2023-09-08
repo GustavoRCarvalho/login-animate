@@ -11,6 +11,7 @@ export const ButtonSignIn = ({ onClick, aliance }) => {
 const Button = styled.button`
   background-color: #0000;
 
+  font-family: "Quicksand", sans-serif;
   font-size: 1.1em;
   color: ${(props) =>
     props.$aliance ? "var(--color-login-light)" : "var(--color-login)"};
@@ -34,12 +35,12 @@ const Button = styled.button`
           props.$aliance
             ? "var(--bg-color-login-star-blue)"
             : "var(--bg-color-login-star-red)"},
-      2.5em 0.5em 5em 0.4em
+      1em 0.2em 3em 0.1em
         ${(props) =>
           props.$aliance
             ? "var(--bg-color-login-star-blue)"
             : "var(--bg-color-login-star-red)"},
-      -2.5em -0.5em 5em 0.4em
+      -1em -0.2em 3em 0.1em
         ${(props) =>
           props.$aliance
             ? "var(--bg-color-login-star-blue)"

@@ -94,6 +94,8 @@ const LoginChangeButton = styled.button`
   padding-block: 0.4em;
   padding-inline: 0.8em;
 
+  font-family: "Quicksand", sans-serif;
+
   color: ${(props) =>
     props.$aliance ? "var(--color-login)" : "var(--color-login-light)"};
 
@@ -147,6 +149,8 @@ const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  font-family: "Quicksand", sans-serif;
 
   width: 100%;
 
