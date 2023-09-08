@@ -10,7 +10,7 @@ export const ListMenuStart = styled.ul`
   display: flex;
   justify-content: center;
 
-  font-family: "Caveat", cursive;
+  font-family: "Quicksand", sans-serif;
 
   padding: 0;
   margin: auto;
