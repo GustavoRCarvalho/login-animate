@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import styled from "styled-components"
 import { LoginOrdem } from "../components/Screens/LoginOrdem"
-import { LoginGhibli } from "../components/screens/LoginGhibli"
+import { LoginGhibli } from "../components/Screens/LoginGhibli"
 import { LoginStar } from "../components/Screens/LoginStar"
 
 export const Content = () => {
