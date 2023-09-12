@@ -8,6 +8,10 @@ import { ListMenuStart, MenuItemStart } from "./MenuStart"
 
 const MenuItems = [
   {
+    path: "",
+    title: "Home",
+  },
+  {
     path: "login-ghibli",
     title: "Ghibli",
   },
