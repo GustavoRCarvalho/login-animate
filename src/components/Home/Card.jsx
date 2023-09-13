@@ -28,7 +28,8 @@ const CardContainer = styled.div`
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     width: 16em;
     height: 21em;
   }

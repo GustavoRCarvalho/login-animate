@@ -9,7 +9,8 @@ const Span = styled.span`
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     text-decoration: underline;
   }
 `

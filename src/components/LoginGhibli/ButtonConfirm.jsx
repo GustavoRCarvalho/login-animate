@@ -23,7 +23,8 @@ const Button = styled.button`
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: var(--bg-color-login-green);
     box-shadow: 0em 0em 0.65em 0.35em var(--bg-color-login-green),
       2.5em 0.5em 5em 0.4em var(--bg-color-login-green),

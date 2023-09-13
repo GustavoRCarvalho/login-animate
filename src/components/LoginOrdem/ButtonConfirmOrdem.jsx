@@ -29,7 +29,8 @@ const Button = styled.button`
 
   cursor: ${(props) => (!props.disabled ? "pointer" : "not-allowed")};
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: ${(props) =>
       !props.disabled && "var(--bg-color-login-ordem-red)"};
     box-shadow: ${(props) =>

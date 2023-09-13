@@ -68,7 +68,8 @@ const LoginAnotherButton = styled.button`
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: ${(props) =>
       props.$aliance
         ? "var(--bg-color-login-google-gradient-light)"
