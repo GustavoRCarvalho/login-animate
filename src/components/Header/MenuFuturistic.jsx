@@ -15,6 +15,8 @@ export const ListMenuFuturistic = styled.ul`
   padding: 0;
   margin: auto;
 
+  pointer-events: all;
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: start;

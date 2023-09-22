@@ -51,6 +51,7 @@ const ContainerHeader = styled.header`
   top: 0;
 
   z-index: 2;
+  pointer-events: none;
 
   @media screen and (max-width: 768px) {
     position: absolute;
