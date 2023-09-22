@@ -16,6 +16,11 @@ body {
   --bg-color-pink: #eb37bc;
   --color-pink-border: #b4298f;
 
+  --primary-blue-futuristic: #0099ff;
+  --primary-light-blue-futuristic: #5be6ff;
+  --primary-orange-futuristic: #ff814f;
+  --primary-yellow-futuristic: 33 150 243;
+
   font-family: Arial;
   line-height: 1.5;
   font-weight: 400;
