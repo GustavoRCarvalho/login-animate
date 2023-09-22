@@ -4,6 +4,7 @@ import { Card } from "../Home/Card"
 import ghibliImage from "../../assets/home/ghibliImage.png"
 import ordemImage from "../../assets/home/ordemImage.png"
 import starImage from "../../assets/home/starImage.png"
+import futuristicImage from "../../assets/home/futuristicImage.png"
 
 export const Home = () => {
   return (
@@ -13,6 +14,11 @@ export const Home = () => {
         link="login-ordem-paranormal"
         title={"Ordem Paranormal"}
         src={ordemImage}
+      />
+      <Card
+        link="futuristic"
+        title={"Futuristic Windows"}
+        src={futuristicImage}
       />
       <Card link="login-start-wars" title={"Start Wars"} src={starImage} />
     </HomeContentLimit>

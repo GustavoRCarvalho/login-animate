@@ -5,6 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai"
 import { styled } from "styled-components"
 import { ListMenuOrdem, MenuItemOrdem } from "./MenuOrdem"
 import { ListMenuStart, MenuItemStart } from "./MenuStart"
+import { ListMenuFuturistic, MenuItemFuturistic } from "./MenuFuturistic"
 
 const MenuItems = [
   {
@@ -22,6 +23,10 @@ const MenuItems = [
   {
     path: "login-start-wars",
     title: "Start Wars",
+  },
+  {
+    path: "futuristic",
+    title: "Futuristic Windows",
   },
 ]
 
@@ -76,6 +81,25 @@ export const Menu = ({ isOpen, setIsOpen }) => {
           <MenuIcon onClick={() => setIsOpen((state) => !state)} />
         )}
       </ListMenuStart>
+    )
+  } else if (path === "futuristic") {
+    return (
+      <ListMenuFuturistic $isOpen={isOpen}>
+        {isOpen ? (
+          MenuItems.map((item) => (
+            <NoStyleLinkRouter key={item.path} to={item.path}>
+              <MenuItemFuturistic
+                $isSelected={path === item.path}
+                $isOpen={isOpen}
+              >
+                {item.title}
+              </MenuItemFuturistic>
+            </NoStyleLinkRouter>
+          ))
+        ) : (
+          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
+        )}
+      </ListMenuFuturistic>
     )
   }
 }
