@@ -38,6 +38,7 @@ const ContainerLimiteMenu = styled.nav`
     height: ${(props) => (props.$isOpen ? "100vh" : "auto")};
     padding-block: 0;
   }
+  pointer-events: all;
 `
 
 const ContainerHeader = styled.header`
@@ -51,10 +52,10 @@ const ContainerHeader = styled.header`
   top: 0;
 
   z-index: 2;
-  pointer-events: none;
-
   @media screen and (max-width: 768px) {
     position: absolute;
     justify-content: start;
   }
+
+  pointer-events: none;
 `

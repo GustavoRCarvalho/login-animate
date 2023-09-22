@@ -110,4 +110,5 @@ const MenuIcon = styled(AiOutlineMenu)`
   padding: 0.5em;
 
   cursor: pointer;
+  pointer-events: all;
 `

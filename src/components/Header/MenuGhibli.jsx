@@ -13,7 +13,7 @@ export const ListMenuGhibli = styled.ul`
   padding: 0;
   margin: auto;
 
-  pointer-events: all;
+  pointer-events: none;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -43,6 +43,8 @@ export const MenuItemGhibli = styled.li`
 
   background-color: ${(props) =>
     props.$isSelected && "var(--bg-color-login-green)"};
+
+  pointer-events: all;
 
   cursor: pointer;
   box-shadow: ${(props) =>

@@ -15,7 +15,7 @@ export const ListMenuOrdem = styled.ul`
   padding: 0;
   margin: auto;
 
-  pointer-events: all;
+  pointer-events: none;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -45,6 +45,8 @@ export const MenuItemOrdem = styled.li`
 
   background-color: ${(props) =>
     props.$isSelected && "var(--bg-color-login-ordem-red)"};
+
+  pointer-events: all;
 
   cursor: pointer;
   box-shadow: ${(props) =>
