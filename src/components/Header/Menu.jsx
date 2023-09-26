@@ -4,7 +4,7 @@ import { ListMenuGhibli, MenuItemGhibli } from "./MenuGhibli"
 import { AiOutlineMenu } from "react-icons/ai"
 import { styled } from "styled-components"
 import { ListMenuOrdem, MenuItemOrdem } from "./MenuOrdem"
-import { ListMenuStart, MenuItemStart } from "./MenuStart"
+// import { ListMenuStart, MenuItemStart } from "./MenuStart"
 import { ListMenuFuturistic, MenuItemFuturistic } from "./MenuFuturistic"
 
 const MenuItems = [
@@ -20,13 +20,17 @@ const MenuItems = [
     path: "login-ordem-paranormal",
     title: "Ordem Paranormal",
   },
-  {
-    path: "login-start-wars",
-    title: "Start Wars",
-  },
+  // {
+  //   path: "login-start-wars",
+  //   title: "Start Wars",
+  // },
   {
     path: "futuristic",
     title: "Futuristic Windows",
+  },
+  {
+    path: "retro",
+    title: "Retro",
   },
 ]
 
@@ -66,23 +70,42 @@ export const Menu = ({ isOpen, setIsOpen }) => {
         )}
       </ListMenuGhibli>
     )
-  } else if (path === "login-start-wars") {
+    // } else if (path === "login-start-wars") {
+    //   return (
+    //     <ListMenuStart $isOpen={isOpen}>
+    //       {isOpen ? (
+    //         MenuItems.map((item) => (
+    //           <NoStyleLinkRouter key={item.path} to={item.path}>
+    //             <MenuItemStart $isSelected={path === item.path} $isOpen={isOpen}>
+    //               {item.title}
+    //             </MenuItemStart>
+    //           </NoStyleLinkRouter>
+    //         ))
+    //       ) : (
+    //         <MenuIcon onClick={() => setIsOpen((state) => !state)} />
+    //       )}
+    //     </ListMenuStart>
+    //   )
+  } else if (path === "futuristic") {
     return (
-      <ListMenuStart $isOpen={isOpen}>
+      <ListMenuFuturistic $isOpen={isOpen}>
         {isOpen ? (
           MenuItems.map((item) => (
             <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemStart $isSelected={path === item.path} $isOpen={isOpen}>
+              <MenuItemFuturistic
+                $isSelected={path === item.path}
+                $isOpen={isOpen}
+              >
                 {item.title}
-              </MenuItemStart>
+              </MenuItemFuturistic>
             </NoStyleLinkRouter>
           ))
         ) : (
           <MenuIcon onClick={() => setIsOpen((state) => !state)} />
         )}
-      </ListMenuStart>
+      </ListMenuFuturistic>
     )
-  } else if (path === "futuristic") {
+  } else if (path === "retro") {
     return (
       <ListMenuFuturistic $isOpen={isOpen}>
         {isOpen ? (
