@@ -6,7 +6,7 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(window.innerWidth > 768)
 
   function handleClickOutside(e) {
-    if (e.target.id === "nav") {
+    if (e.target.id === "nav" && window.innerWidth < 768) {
       setIsOpen(false)
     }
   }
@@ -31,7 +31,7 @@ const ContainerLimiteMenu = styled.nav`
   width: min-content;
   height: min-content;
 
-  padding-block: 1em;
+  margin-block: 1em;
 
   @media screen and (max-width: 768px) {
     width: ${(props) => (props.$isOpen ? "100vw" : "auto")};
