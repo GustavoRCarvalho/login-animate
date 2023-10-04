@@ -31,5 +31,7 @@ export const ButtonRetro = styled.button`
     transform: translate(0px, 4px);
   }
 
+  user-select: none;
+
   transition: 100ms;
 `

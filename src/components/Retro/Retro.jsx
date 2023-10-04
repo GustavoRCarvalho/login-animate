@@ -5,11 +5,15 @@ import { ButtonRetro } from "./ButtonRetro"
 import { GiAchievement } from "react-icons/gi"
 import { BsFillGearFill } from "react-icons/bs"
 import Gamepad from "../../assets/retro/gamepad.svg"
+import { JoyStick } from "./JoyStick"
+import { useState } from "react"
 
 export const Retro = () => {
+  const [position, setPosition] = useState({ x: 40, y: 40 })
+
   return (
     <ContentLimitCustom>
-      <ContainerRetro>
+      <ContainerRetro x={(position.x - 40) * 0.4} y={(position.y - 40) * 0.4}>
         <IconGear />
         <Title>
           <Icon />
@@ -24,6 +28,7 @@ export const Retro = () => {
           <ButtonRetro>login</ButtonRetro>
           <ButtonRetro>reset</ButtonRetro>
         </ButtonWrapper>
+        <JoyStick position={position} setPosition={setPosition} />
       </ContainerRetro>
     </ContentLimitCustom>
   )
@@ -79,7 +84,15 @@ const ContentLimitCustom = styled(ContentLimit)`
   justify-content: center;
 `
 
-const ContainerRetro = styled.div`
+const ContainerRetro = styled.div.attrs((props) => ({
+  style: {
+    boxShadow: `
+      ${props.x * 0.3}px ${props.y * 0.3}px 0px 0px #ff0000,
+      ${props.x * 0.7}px ${props.y * 0.7}px 0px 0px #00ff00,
+      ${props.x}px ${props.y}px 0px 0px #0000ff
+    `,
+  },
+}))`
   position: relative;
   background: url(${Gamepad});
   background-size: 2em;
