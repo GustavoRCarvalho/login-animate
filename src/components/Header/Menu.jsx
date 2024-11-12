@@ -8,10 +8,10 @@ import { ListMenuOrdem, MenuItemOrdem } from "./MenuOrdem"
 import { ListMenuFuturistic, MenuItemFuturistic } from "./MenuFuturistic"
 
 const MenuItems = [
-  {
-    path: "",
-    title: "Home",
-  },
+  // {
+  //   path: "",
+  //   title: "Home",
+  // },
   {
     path: "login-ghibli",
     title: "Ghibli",
@@ -54,13 +54,16 @@ export const Menu = ({ isOpen, setIsOpen }) => {
         )}
       </ListMenuOrdem>
     )
-  } else if (path === "login-ghibli") {
+  } else if (path === "login-ghibli" || path === "") {
     return (
       <ListMenuGhibli $isOpen={isOpen}>
         {isOpen ? (
           MenuItems.map((item) => (
             <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemGhibli $isSelected={path === item.path} $isOpen={isOpen}>
+              <MenuItemGhibli
+                $isSelected={path === item.path || "login-ghibli" === item.path}
+                $isOpen={isOpen}
+              >
                 {item.title}
               </MenuItemGhibli>
             </NoStyleLinkRouter>
