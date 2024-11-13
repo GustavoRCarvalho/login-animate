@@ -1,24 +1,25 @@
 import { styled } from "styled-components"
-import { ButtonConfirm } from "../LoginGhibli/ButtonConfirm"
-import { InputLogin } from "../LoginGhibli/InputLogin"
-import { useState } from "react"
-import audio from "../../assets/audios/loginGhibliAudio.mp3"
-import { PlayerGhibli } from "../Common/PlayerGhibli"
-import { ForgotPassword } from "../LoginGhibli/ForgotPassword"
-import { Logo } from "../LoginGhibli/Logo"
+import { BackgroundImage } from "./backgroundImage"
 import { ContentLimit } from "../Common/ContentLimit"
-import logoImg from "../../assets/ghibli/ghibliLogo.svg"
-import backgroundImg from "../../assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif"
-import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
+import { Logo } from "../LoginGhibli/Logo"
+import ordemLogo from "../../assets/ordem/ordemLogo.png"
+import { useEffect, useState } from "react"
+import { ButtonConfirmOrdem } from "./ButtonConfirmOrdem"
 import { handleSubmit } from "../Common/LoginshandleSubmit"
+import { InputLoginOrdem } from "./InputLoginOrdem"
+import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
+import { ForgotPassword } from "../LoginGhibli/ForgotPassword"
 
 const initialState = {
   User: { value: "", error: "" },
   Password: { value: "", error: "" },
 }
 
-export const LoginGhibli = () => {
+export const LoginOrdem = () => {
   const [form, setForm] = useState(initialState)
+  const [porcent, setPorcent] = useState(0)
+  const [isHover, setIsHover] = useState(false)
+  const [isReady, setIsReady] = useState(false)
 
   const handleInput = ({ text, type }) => {
     setForm((state) => {
@@ -26,24 +27,33 @@ export const LoginGhibli = () => {
     })
   }
 
+  useEffect(() => {
+    if (form.User.value !== "" && form.Password.value !== "") {
+      setPorcent(80)
+      setIsReady(true)
+    } else if (form.User.value !== "" || form.Password.value !== "") {
+      setPorcent(40)
+      setIsReady(false)
+    } else {
+      setPorcent(0)
+      setIsReady(false)
+    }
+  }, [form])
+
   return (
     <>
-      <LoginBackgroundImage src={backgroundImg} />
+      <BackgroundImage porcent={porcent} ready={isHover} />
       <LoginContentLimit>
-        <PlayerGhibli
-          audio={audio}
-          title="Spirited Away: Always With Me cover by Deneb"
-        />
         <LoginContainer>
-          <Logo src={logoImg} alt="logo" />
+          <Logo src={ordemLogo} />
           <InputWrapper>
-            <InputLogin
+            <InputLoginOrdem
               label={"User"}
               value={form.User?.value}
               error={form.User?.error !== ""}
               setValue={handleInput}
             />
-            <InputLogin
+            <InputLoginOrdem
               label={"Password"}
               value={form.Password?.value}
               error={form.Password?.error !== ""}
@@ -52,8 +62,10 @@ export const LoginGhibli = () => {
             />
             <ForgotPassword />
           </InputWrapper>
-          <ButtonConfirm
+          <ButtonConfirmOrdem
             onClick={() => handleSubmit({ form: form, setForm: setForm })}
+            setIsHover={setIsHover}
+            isReady={isReady}
           />
           <AnotherLogins />
         </LoginContainer>
@@ -66,7 +78,7 @@ const LoginContentLimit = styled(ContentLimit)`
   height: 100vh;
 
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 
   @media screen and (max-width: 768px) {
@@ -74,21 +86,11 @@ const LoginContentLimit = styled(ContentLimit)`
   }
 `
 
-const LoginBackgroundImage = styled.img`
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  height: 100%;
-  width: 100%;
-
-  object-fit: cover;
-`
-
 const LoginContainer = styled.div`
   backdrop-filter: blur(4px);
   border-radius: 1em;
+
+  font-family: "Caveat", cursive;
 
   display: flex;
   flex-direction: column;

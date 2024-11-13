@@ -4,130 +4,61 @@ import { ListMenuGhibli, MenuItemGhibli } from "./MenuGhibli"
 import { AiOutlineMenu } from "react-icons/ai"
 import { styled } from "styled-components"
 import { ListMenuOrdem, MenuItemOrdem } from "./MenuOrdem"
-// import { ListMenuStart, MenuItemStart } from "./MenuStart"
 import { ListMenuFuturistic, MenuItemFuturistic } from "./MenuFuturistic"
 
-const MenuItems = [
-  // {
-  //   path: "",
-  //   title: "Home",
-  // },
-  {
-    path: "login-ghibli",
+const MenuComponents = {
+  "login-ghibli": {
     title: "Ghibli",
+    List: ListMenuGhibli,
+    MenuItem: MenuItemGhibli,
   },
-  {
-    path: "login-ordem-paranormal",
+  sunset: {
+    title: "Sunset",
+    List: ListMenuGhibli,
+    MenuItem: MenuItemGhibli,
+  },
+  "login-ordem-paranormal": {
     title: "Ordem Paranormal",
+    List: ListMenuOrdem,
+    MenuItem: MenuItemOrdem,
   },
-  // {
-  //   path: "login-start-wars",
-  //   title: "Start Wars",
-  // },
-  {
-    path: "futuristic",
+  futuristic: {
     title: "Futuristic Windows",
+    List: ListMenuFuturistic,
+    MenuItem: MenuItemFuturistic,
   },
-  {
-    path: "retro",
+  retro: {
     title: "Retro",
+    List: ListMenuFuturistic,
+    MenuItem: MenuItemFuturistic,
   },
-]
+}
 
 export const Menu = ({ isOpen, setIsOpen }) => {
   const { pathname } = useLocation()
   const path = pathname.split("/")[1]
-
-  if (path === "login-ordem-paranormal") {
-    return (
-      <ListMenuOrdem $isOpen={isOpen}>
-        {isOpen ? (
-          MenuItems.map((item) => (
-            <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemOrdem $isSelected={path === item.path} $isOpen={isOpen}>
-                {item.title}
-              </MenuItemOrdem>
-            </NoStyleLinkRouter>
-          ))
-        ) : (
-          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
-        )}
-      </ListMenuOrdem>
-    )
-  } else if (path === "login-ghibli" || path === "") {
-    return (
-      <ListMenuGhibli $isOpen={isOpen}>
-        {isOpen ? (
-          MenuItems.map((item) => (
-            <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemGhibli
-                $isSelected={path === item.path || "login-ghibli" === item.path}
-                $isOpen={isOpen}
-              >
-                {item.title}
-              </MenuItemGhibli>
-            </NoStyleLinkRouter>
-          ))
-        ) : (
-          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
-        )}
-      </ListMenuGhibli>
-    )
-    // } else if (path === "login-start-wars") {
-    //   return (
-    //     <ListMenuStart $isOpen={isOpen}>
-    //       {isOpen ? (
-    //         MenuItems.map((item) => (
-    //           <NoStyleLinkRouter key={item.path} to={item.path}>
-    //             <MenuItemStart $isSelected={path === item.path} $isOpen={isOpen}>
-    //               {item.title}
-    //             </MenuItemStart>
-    //           </NoStyleLinkRouter>
-    //         ))
-    //       ) : (
-    //         <MenuIcon onClick={() => setIsOpen((state) => !state)} />
-    //       )}
-    //     </ListMenuStart>
-    //   )
-  } else if (path === "futuristic") {
-    return (
-      <ListMenuFuturistic $isOpen={isOpen}>
-        {isOpen ? (
-          MenuItems.map((item) => (
-            <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemFuturistic
-                $isSelected={path === item.path}
-                $isOpen={isOpen}
-              >
-                {item.title}
-              </MenuItemFuturistic>
-            </NoStyleLinkRouter>
-          ))
-        ) : (
-          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
-        )}
-      </ListMenuFuturistic>
-    )
-  } else if (path === "retro") {
-    return (
-      <ListMenuFuturistic $isOpen={isOpen}>
-        {isOpen ? (
-          MenuItems.map((item) => (
-            <NoStyleLinkRouter key={item.path} to={item.path}>
-              <MenuItemFuturistic
-                $isSelected={path === item.path}
-                $isOpen={isOpen}
-              >
-                {item.title}
-              </MenuItemFuturistic>
-            </NoStyleLinkRouter>
-          ))
-        ) : (
-          <MenuIcon onClick={() => setIsOpen((state) => !state)} />
-        )}
-      </ListMenuFuturistic>
-    )
+  const pathLabel = path === "" ? "login-ghibli" : path
+  const list = Object.keys(MenuComponents)
+  const { List, MenuItem } = MenuComponents[pathLabel] ?? {
+    List: ListMenuGhibli,
+    MenuItem: MenuItemGhibli,
   }
+
+  return (
+    <List $isOpen={isOpen}>
+      {isOpen ? (
+        list.map((item) => (
+          <NoStyleLinkRouter key={item} to={item}>
+            <MenuItem $isSelected={pathLabel === item} $isOpen={isOpen}>
+              {MenuComponents[item].title}
+            </MenuItem>
+          </NoStyleLinkRouter>
+        ))
+      ) : (
+        <MenuIcon onClick={() => setIsOpen((state) => !state)} />
+      )}
+    </List>
+  )
 }
 
 const MenuIcon = styled(AiOutlineMenu)`
