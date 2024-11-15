@@ -1,11 +1,17 @@
 import { styled } from "styled-components"
 
 export const ForgotPassword = () => {
-  return <Span>Forget Your Password?</Span>
+  return <Span>Forget password?</Span>
 }
 
 const Span = styled.span`
-  font-size: 0.9em;
+  display: block;
+  font-size: 0.75em;
+  width: 100%;
+  text-align: end;
+  color: var(--color-login);
+
+  margin-block: 0.25em 1em;
 
   cursor: pointer;
 

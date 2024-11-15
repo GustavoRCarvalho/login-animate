@@ -4,11 +4,13 @@ import { LoginOrdem } from "../components/LoginOrdem/LoginOrdem"
 import { LoginGhibli } from "../components/LoginGhibli/LoginGhibli"
 import { Futuristic } from "../components/Futuristic/Futuristic"
 import { Retro } from "../components/Retro/Retro"
+import { Sunset } from "../components/Sunset/Sunset"
 
 export const Content = () => {
   return (
     <MainContainer>
       <Routes>
+        <Route path="/sunset" element={<Sunset />} />
         <Route path="/login-ordem-paranormal" element={<LoginOrdem />} />
         <Route path="/futuristic" element={<Futuristic />} />
         <Route path="/retro" element={<Retro />} />

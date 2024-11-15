@@ -35,7 +35,7 @@ const ContainerLimiteMenu = styled.nav`
 
   @media screen and (max-width: 768px) {
     width: ${(props) => (props.$isOpen ? "100vw" : "auto")};
-    height: ${(props) => (props.$isOpen ? "100vh" : "auto")};
+    height: ${(props) => (props.$isOpen ? "calc(100vh - 2em)" : "auto")};
     padding-block: 0;
   }
   pointer-events: all;
