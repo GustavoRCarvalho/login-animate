@@ -5,6 +5,8 @@ import { InputLogin } from "./InputLogin"
 import { ForgotPassword } from "./ForgotPassword"
 import { MdEmail, MdLockOutline } from "react-icons/md"
 import { AnotherLogins } from "./AnotherLogins"
+import { GoSun } from "react-icons/go"
+import { GoMoon } from "react-icons/go"
 
 const initialState = {
   Email: { value: "", error: "" },
@@ -23,7 +25,6 @@ export const Sunset = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    setOpen((state) => !state)
   }
 
   return (
@@ -31,6 +32,13 @@ export const Sunset = () => {
       <Background open={open} />
       <SunsetContainer $isOpen={open}>
         <LoginContainer>
+          <LightDarkButton
+            $isOpen={open}
+            onClick={() => setOpen((state) => !state)}
+          >
+            <GoSun />
+            <GoMoon />
+          </LightDarkButton>
           <Text>SUNSET</Text>
           <form action="submit">
             <InputLogin
@@ -61,6 +69,31 @@ export const Sunset = () => {
   )
 }
 
+const LightDarkButton = styled.button`
+  position: absolute;
+
+  right: 2em;
+  top: 2em;
+
+  background-color: transparent;
+  border: none;
+
+  svg {
+    color: var(--color-login);
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  svg:nth-child(1) {
+    display: ${(props) => (props.$isOpen ? "unset" : "none")};
+  }
+  svg:nth-child(2) {
+    display: ${(props) => (props.$isOpen ? "none" : "unset")};
+  }
+
+  cursor: pointer;
+`
+
 const LoginButton = styled.button`
   font-size: 0.8em;
   background-color: var(--bg-color-button-login);
@@ -77,12 +110,13 @@ const LoginButton = styled.button`
 `
 
 const LoginContainer = styled.div`
+  position: relative;
   background: linear-gradient(0deg, var(--bg-color-login) 20%, transparent);
   backdrop-filter: blur(10px);
 
   border-radius: 1.25em;
 
-  min-width: 300px;
+  min-width: 250px;
 
   padding: 2em;
 
