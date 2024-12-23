@@ -7,6 +7,7 @@ export const InputLogin = ({
   label,
   type = "text",
   error = true,
+  autoComplete = "",
 }) => {
   return (
     <InputContainer tabIndex={0} $error={error}>
@@ -16,6 +17,7 @@ export const InputLogin = ({
         onChange={(e) => setValue({ text: e.target.value, type: label })}
         placeholder={label}
         type={type}
+        autoComplete={autoComplete}
       />
     </InputContainer>
   )

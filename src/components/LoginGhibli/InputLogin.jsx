@@ -7,6 +7,7 @@ export const InputLogin = ({
   label,
   type = "text",
   error = true,
+  autoComplete = "",
 }) => {
   const [onFocus, setOnFocus] = useState(false)
 
@@ -22,6 +23,7 @@ export const InputLogin = ({
         value={value}
         onChange={(e) => setValue({ text: e.target.value, type: label })}
         type={type}
+        autoComplete={autoComplete}
       />
     </InputContainer>
   )
