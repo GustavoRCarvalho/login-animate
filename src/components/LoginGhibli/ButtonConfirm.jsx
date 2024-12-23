@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ButtonConfirm = ({ onClick }) => {
+export const ButtonConfirm = ({ onClick = () => {} }) => {
   return (
     <Button type="submit" onClick={onClick}>
       Sign In
