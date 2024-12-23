@@ -38,16 +38,17 @@ export const LoginOrdem = () => {
           <InputWrapper>
             <InputLoginOrdem
               label={"User"}
+              autoComplete="username"
               value={form.User?.value}
               error={form.User?.error !== ""}
               setValue={handleInput}
             />
             <InputLoginOrdem
               label={"Password"}
+              autoComplete="current-password"
               value={form.Password?.value}
               error={form.Password?.error !== ""}
               setValue={handleInput}
-              autoComplete="current-password"
               type="password"
             />
             <ForgotPassword />

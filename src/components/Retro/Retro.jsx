@@ -21,7 +21,7 @@ export const Retro = () => {
           <Icon />
         </Title>
         <InputWrapper>
-          <InputRetro placeholder="User" type="text" />
+          <InputRetro placeholder="User" type="text" autoComplete="username" />
           <InputRetro
             placeholder="Password"
             type="password"

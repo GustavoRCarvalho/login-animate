@@ -29,6 +29,7 @@ export const LoginGhibli = () => {
               label={"User"}
               value={form.User?.value}
               error={form.User?.error !== ""}
+              autoComplete="username"
               setValue={handleInput}
             />
             <InputLogin
