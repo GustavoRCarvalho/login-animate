@@ -7,6 +7,7 @@ export const InputLoginOrdem = ({
   label,
   type = "text",
   error = true,
+  autoComplete = "",
 }) => {
   const [onFocus, setOnFocus] = useState(false)
 
@@ -22,6 +23,7 @@ export const InputLoginOrdem = ({
         value={value}
         onChange={(e) => setValue({ text: e.target.value, type: label })}
         type={type}
+        autoComplete={autoComplete}
       />
     </InputContainer>
   )
