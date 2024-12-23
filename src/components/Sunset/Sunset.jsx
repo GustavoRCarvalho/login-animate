@@ -7,6 +7,7 @@ import { MdEmail, MdLockOutline } from "react-icons/md"
 import { AnotherLogins } from "./AnotherLogins"
 import { GoSun } from "react-icons/go"
 import { GoMoon } from "react-icons/go"
+import { useUserHook } from "../Common/UserHook"
 
 const initialState = {
   Email: { value: "", error: "" },
@@ -15,17 +16,7 @@ const initialState = {
 
 export const Sunset = () => {
   const [open, setOpen] = useState(true)
-  const [form, setForm] = useState(initialState)
-
-  const handleInput = ({ text, type }) => {
-    setForm((state) => {
-      return { ...state, [type]: { value: text, error: "" } }
-    })
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-  }
+  const { form, handleInput, handleSubmit } = useUserHook(initialState)
 
   return (
     <>
@@ -48,6 +39,7 @@ export const Sunset = () => {
               value={form.Email?.value}
               error={form.Email?.error !== ""}
               setValue={handleInput}
+              autoComplete="email"
             />
             <InputLogin
               Icon={MdLockOutline}
@@ -56,6 +48,7 @@ export const Sunset = () => {
               value={form.Password?.value}
               error={form.Password?.error !== ""}
               setValue={handleInput}
+              autoComplete="current-password"
             />
             <ForgotPassword />
             <LoginButton type="submit" onClick={handleSubmit}>

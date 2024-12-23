@@ -1,7 +1,6 @@
 import { styled } from "styled-components"
 import { ButtonConfirm } from "./ButtonConfirm"
 import { InputLogin } from "./InputLogin"
-import { useState } from "react"
 import audio from "../../assets/audios/loginGhibliAudio.mp3"
 import { PlayerGhibli } from "../Common/PlayerGhibli"
 import { ForgotPassword } from "./ForgotPassword"
@@ -10,21 +9,10 @@ import { ContentLimit } from "../Common/ContentLimit"
 import logoImg from "../../assets/ghibli/ghibliLogo.svg"
 import backgroundImg from "../../assets/ghibli/77a266bb54fc65179ec0672d97268c3a.gif"
 import { AnotherLogins } from "./AnotherLogins"
-import { handleSubmit } from "../Common/LoginshandleSubmit"
-
-const initialState = {
-  User: { value: "", error: "" },
-  Password: { value: "", error: "" },
-}
+import { useUserHook } from "../Common/UserHook"
 
 export const LoginGhibli = () => {
-  const [form, setForm] = useState(initialState)
-
-  const handleInput = ({ text, type }) => {
-    setForm((state) => {
-      return { ...state, [type]: { value: text, error: "" } }
-    })
-  }
+  const { form, handleInput, handleSubmit } = useUserHook()
 
   return (
     <>
@@ -34,7 +22,7 @@ export const LoginGhibli = () => {
           audio={audio}
           title="Spirited Away: Always With Me cover by Deneb"
         />
-        <LoginContainer>
+        <LoginContainer onSubmit={handleSubmit}>
           <Logo src={logoImg} alt="logo" />
           <InputWrapper>
             <InputLogin
@@ -49,12 +37,11 @@ export const LoginGhibli = () => {
               error={form.Password?.error !== ""}
               setValue={handleInput}
               type="password"
+              autoComplete="current-password"
             />
             <ForgotPassword />
           </InputWrapper>
-          <ButtonConfirm
-            onClick={() => handleSubmit({ form: form, setForm: setForm })}
-          />
+          <ButtonConfirm />
           <AnotherLogins />
         </LoginContainer>
       </LoginContentLimit>
@@ -86,7 +73,7 @@ const LoginBackgroundImage = styled.img`
   object-fit: cover;
 `
 
-const LoginContainer = styled.div`
+const LoginContainer = styled.form`
   backdrop-filter: blur(4px);
   border-radius: 1em;
 

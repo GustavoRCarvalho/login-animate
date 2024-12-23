@@ -5,27 +5,16 @@ import { Logo } from "../LoginGhibli/Logo"
 import ordemLogo from "../../assets/ordem/ordemLogo.png"
 import { useEffect, useState } from "react"
 import { ButtonConfirmOrdem } from "./ButtonConfirmOrdem"
-import { handleSubmit } from "../Common/LoginshandleSubmit"
 import { InputLoginOrdem } from "./InputLoginOrdem"
 import { AnotherLogins } from "../LoginGhibli/AnotherLogins"
 import { ForgotPassword } from "../LoginGhibli/ForgotPassword"
-
-const initialState = {
-  User: { value: "", error: "" },
-  Password: { value: "", error: "" },
-}
+import { useUserHook } from "../Common/UserHook"
 
 export const LoginOrdem = () => {
-  const [form, setForm] = useState(initialState)
+  const { form, handleInput, handleSubmit } = useUserHook()
   const [porcent, setPorcent] = useState(0)
   const [isHover, setIsHover] = useState(false)
   const [isReady, setIsReady] = useState(false)
-
-  const handleInput = ({ text, type }) => {
-    setForm((state) => {
-      return { ...state, [type]: { value: text, error: "" } }
-    })
-  }
 
   useEffect(() => {
     if (form.User.value !== "" && form.Password.value !== "") {
@@ -44,7 +33,7 @@ export const LoginOrdem = () => {
     <>
       <BackgroundImage porcent={porcent} ready={isHover} />
       <LoginContentLimit>
-        <LoginContainer>
+        <LoginContainer onSubmit={handleSubmit}>
           <Logo src={ordemLogo} />
           <InputWrapper>
             <InputLoginOrdem
@@ -58,15 +47,12 @@ export const LoginOrdem = () => {
               value={form.Password?.value}
               error={form.Password?.error !== ""}
               setValue={handleInput}
+              autoComplete="current-password"
               type="password"
             />
             <ForgotPassword />
           </InputWrapper>
-          <ButtonConfirmOrdem
-            onClick={() => handleSubmit({ form: form, setForm: setForm })}
-            setIsHover={setIsHover}
-            isReady={isReady}
-          />
+          <ButtonConfirmOrdem setIsHover={setIsHover} isReady={isReady} />
           <AnotherLogins />
         </LoginContainer>
       </LoginContentLimit>
@@ -86,7 +72,7 @@ const LoginContentLimit = styled(ContentLimit)`
   }
 `
 
-const LoginContainer = styled.div`
+const LoginContainer = styled.form`
   backdrop-filter: blur(4px);
   border-radius: 1em;
 

@@ -22,7 +22,11 @@ export const Retro = () => {
         </Title>
         <InputWrapper>
           <InputRetro placeholder="User" type="text" />
-          <InputRetro placeholder="Password" type="password" />
+          <InputRetro
+            placeholder="Password"
+            type="password"
+            autoComplete="current-password"
+          />
         </InputWrapper>
         <ButtonWrapper>
           <ButtonRetro>login</ButtonRetro>
@@ -84,7 +88,7 @@ const ContentLimitCustom = styled(ContentLimit)`
   justify-content: center;
 `
 
-const ContainerRetro = styled.div.attrs((props) => ({
+const ContainerRetro = styled.form.attrs((props) => ({
   style: {
     boxShadow: `
       ${props.x * 0.3}px ${props.y * 0.3}px 0px 0px #ff0000,
